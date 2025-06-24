@@ -1,0 +1,28 @@
+
+<nav class="navbar navbar-expand-lg bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#" style="font-size:64px">DjangoCRM</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+       {% if user.is_authenticated %}
+       <li>
+        <a href="{% url 'add_record' %}" style="font-size:33px">Add_record</a>
+       </li>
+       <li>
+        <a href="{% url 'logout' %}" style="font-size:33px">Logout</a>
+       </li>
+       {% else %}
+        <li>
+          <a href="{% url 'register' %}" style="font-size:33px">Register</a>
+        </li>
+        <li>
+          <a href="{% url 'home' %}" style="font-size:33px">Login</a>
+        </li>
+
+
+        {% endif %}
+    </div>
+  </div>
+</nav>

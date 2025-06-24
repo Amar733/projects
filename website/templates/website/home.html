@@ -1,0 +1,85 @@
+{% extends "website/base.html" %}
+
+{% block content %}
+
+{% comment %} <div class="col-md-6 offset-md-3"> {% endcomment %}
+
+{% if user.is_authenticated %}
+
+<h1>Records...</h1>
+<table class="table table-striped table-hover table-bordered table-sm">
+  <thead>
+    <tr>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Emial</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Address</th>
+      <th scope="col">city</th>
+      <th scope="col">state</th>
+      <th scope="col">zipcode</th>
+      <th scope="col">country</th>
+      <th scope="col">created_at</th>
+      <th scope="col">updated_at</th>
+      <th scope="col">id</th>  
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+{% if records %}
+ 
+      {% for record in records %}
+   <td> {{ record.first_name }} </td>
+   <td> {{ record.last_name }} </td>
+   <td>  {{ record.email }} </td>
+    <td>  {{ record.phone_number }} </td>
+    
+    <td> {{ record.address }}  </td>
+    <td>{{ record.city }}  </td>
+    <td> {{ record.state }}  </td>
+    <td>  {{ record.zip_code }}  </td>
+    <td>  {{ record.country }} </td>
+    <td> {{ record.created_at }} </td>
+    <td>{{ record.updated_at }} </td>
+    <td><a href ="{% url 'record' record.id %}">{{ record.id }}</a> </td>
+    </tr>
+    <br>
+       {% endfor %}
+
+{% endif %} 
+
+{% else %}
+<div class="col-md-6 offset-md-3">
+
+  </tbody>
+</table>
+
+<br>
+<form method="post" action="{% url 'home' %}">
+    {% csrf_token %}
+    <form>
+  <div class="mb-3">
+    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name='username' placeholder="userName" required>
+    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+  </div>
+  <br>
+  <div class="mb-3">
+    <input type="password" class="form-control" id="exampleInputPassword1" name='password' placeholder="Password" required>
+  </div>
+  <br>
+  <div class="mb-3 form-check">
+  </div>
+  <button type="submit" class="btn btn-primary">Login</button>
+</form>
+
+
+
+</form>
+{% comment %} </div> {% endcomment %}
+{% endif %}
+
+{% endblock  %}
+
+
+
+

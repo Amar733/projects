@@ -1,0 +1,10 @@
+*.pyc
+__pycache__/
+db.sqlite3
+/static/
+/media/
+/.env
+*.log
+*.sqlite3
+*.pkl
+node_modules/
